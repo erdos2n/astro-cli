@@ -49,12 +49,12 @@ func (s *Suite) TestBuildDeploymentLogsSubscribeRequest() {
 
 func (s *Suite) TestSubscribe() {
 	// Create test server with the echo handler.
-	s := httptest.NewServer(http.HandlerFunc(websocketHandler))
-	defer s.Close()
+	sock := httptest.NewServer(http.HandlerFunc(websocketHandler))
+	defer sock.Close()
 
 	s.Run("success", func() {
 		// Convert http://127.0.0.1 to ws://127.0.0.
-		url := "ws" + strings.TrimPrefix(s.URL, "http")
+		url := "ws" + strings.TrimPrefix(sock.URL, "http")
 
 		err := Subscribe("test-token", url, `{"type": "test", "payload": {"data": {"log": {"log": "test"}}}}`)
 		s.NoError(err)

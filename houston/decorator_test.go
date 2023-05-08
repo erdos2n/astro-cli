@@ -7,9 +7,7 @@ import (
 var errMockHouston = errors.New("mock houston error")
 
 func (s *Suite) Test_isCalledFromUnitTestFile() {
-	if got := isCalledFromUnitTestFile(); got != true {
-		t.Errorf("isCalledFromUnitTestFile() = %v, want %v", got, true)
-	}
+	s.True(isCalledFromUnitTestFile())
 }
 
 func (s *Suite) TestSanitiseVersionString() {
@@ -39,9 +37,7 @@ func (s *Suite) TestSanitiseVersionString() {
 	}
 	for _, tt := range tests {
 		s.Run(tt.name, func() {
-			if got := sanitiseVersionString(tt.args.v); got != tt.want {
-				t.Errorf("sanitiseVersionString() = %v, want %v", got, tt.want)
-			}
+			s.Equal(sanitiseVersionString(tt.args.v), tt.want)
 		})
 	}
 }

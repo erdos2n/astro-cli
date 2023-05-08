@@ -841,7 +841,6 @@ Nothing to cancel. You are currently running Airflow 1.10.10 and you have not in
 
 		buf := new(bytes.Buffer)
 		err = AirflowUpgrade(deploymentID, "", api, buf)
-		t.Log(buf.String()) // Log the buffer so that this test is recognized by go test
 
 		s.NoError(err)
 		expected := `#     AIRFLOW VERSION                  
@@ -891,7 +890,6 @@ func (s *Suite) Test_getAirflowVersionSelection() {
 		os.Stdin = r
 
 		airflowVersion, err := getAirflowVersionSelection("1.10.7", api, buf)
-		t.Log(buf.String()) // Log the buffer so that this test is recognized by go test
 		s.NoError(err)
 		s.Equal("1.10.12", airflowVersion)
 		api.AssertExpectations(s.T())
@@ -1343,7 +1341,6 @@ To cancel, run:
 
 		buf := new(bytes.Buffer)
 		err = RuntimeUpgrade(mockDeployment.ID, "", api, buf)
-		t.Log(buf.String()) // Log the buffer so that this test is recognized by go test
 
 		s.NoError(err)
 		expected := `#     RUNTIME VERSION     
