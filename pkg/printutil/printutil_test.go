@@ -72,7 +72,8 @@ func (s *Suite) TestTablePrint() {
 			wantErr: false,
 		},
 	}
-	for _, tt := range tests {
+	for i := range tests {
+		tt := &tests[i]
 		s.Run(tt.name, func() {
 			tr := &Table{
 				Padding:         tt.fields.Padding,
@@ -132,7 +133,8 @@ func (s *Suite) TestTablePrintWithIndex() {
 			wantErr: false,
 		},
 	}
-	for _, tt := range tests {
+	for i := range tests {
+		tt := &tests[i]
 		s.Run(tt.name, func() {
 			tr := &Table{
 				Padding:         tt.fields.Padding,
@@ -184,7 +186,8 @@ func (s *Suite) TestTablePrintHeader() {
 			wantOut: "testing",
 		},
 	}
-	for _, tt := range tests {
+	for i := range tests {
+		tt := &tests[i]
 		s.Run(tt.name, func() {
 			tr := &Table{
 				Padding:         tt.fields.Padding,
@@ -233,7 +236,8 @@ func (s *Suite) TestTablePrintRows() {
 			wantOut: "testing",
 		},
 	}
-	for _, tt := range tests {
+	for i := range tests {
+		tt := &tests[i]
 		s.Run(tt.name, func() {
 			tr := &Table{
 				Padding:         tt.fields.Padding,

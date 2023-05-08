@@ -1626,9 +1626,10 @@ func (s *Suite) TestCreateDockerProject() {
 		s.NoError(err)
 		postgresService := types.ServiceConfig{}
 		serviceFound := false
-		for _, service := range prj.Services {
+		for i := range prj.Services {
+			service := &prj.Services[i]
 			if service.Name == "webserver" {
-				postgresService = service
+				postgresService = *service
 				serviceFound = true
 				break
 			}
@@ -1643,9 +1644,10 @@ func (s *Suite) TestCreateDockerProject() {
 		s.NoError(err)
 		postgresService := types.ServiceConfig{}
 		serviceFound := false
-		for _, service := range prj.Services {
+		for i := range prj.Services {
+			service := &prj.Services[i]
 			if service.Name == "postgres" {
-				postgresService = service
+				postgresService = *service
 				serviceFound = true
 				break
 			}
